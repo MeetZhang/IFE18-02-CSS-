@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>No.1 - 制作一个简单的菜单动画效果</title>
+    <style>
+        /* reset css */
+        html,body,header,
+        nav,a,input,div{
+            padding: 0;
+            margin: 0;
+        }
+
+        body{
+            text-align: center;
+        }
+        .text{
+            position: relative;
+            font-size: 24px;
+            color: #333;
+            padding: 20px;
+            transition: color .4s;
+        }
+        .text::after{
+            content: "";
+            background: red;
+            position: absolute;
+            width: 0;
+            height: 2px;
+            left: 50%;
+            bottom: 0;
+            /* transform 属性向元素应用 2D 或 3D 转换效果 */
+            transform: translateX(-50%);
+            -ms-transform: translateX(-50%);		/* IE 9 */
+            -webkit-transform: translateX(-50%);	/* Safari and Chrome */
+            -o-transform: translateX(-50%);		/* Opera */
+            -moz-transform: translateX(-50%);		/* Firefox */
+            /* transition 过度动态效果 */
+            transition: width .4s;
+            -moz-transition: width .4s;	/* Firefox 4 */
+            -webkit-transition: width .4s;	/* Safari 和 Chrome */
+            -o-transition: width .4s;	/* Opera */
+        }
+        .btn{
+            width: 100px;
+            background: beige;
+            height: 40px;
+        }
+        .text.active {
+            color: green;
+        }
+        .text.active:after {
+            width: 100px;
+        }
+        
+    </style>
+</head>
+<body>
+    <main class="warp">
+        <h2 class="text">前端学院</h2>
+        <button class="btn" id="btn1">切换样式</button>
+    </main>
+</body>
+</html>
+<script>
+    //定义开关
+    let isOK = true;
+    document.querySelector('.btn').onclick = function() {
+        //点击事件逻辑
+        if(isOK){
+            isOK = false;
+            // 添加样式
+            document.querySelector('.text').classList.add('active');
+        }else{
+            isOK = true;
+            // 删除样式
+            document.querySelector('.text').classList.remove('active');
+        }
+    }
+</script>
